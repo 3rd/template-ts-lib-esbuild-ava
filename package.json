@@ -1,0 +1,38 @@
+{
+	"name": "lib",
+	"version": "1.0.0",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist/"
+	],
+	"license": "",
+	"scripts": {
+		"dev": "ava --watch",
+		"build:js": "esbuild --bundle src/index.ts --outdir=dist --sourcemap --minify --platform=node --log-level=warning ",
+		"build:dts": "tsc --declaration --emitDeclarationOnly",
+		"build": "npm run build:js && npm run build:dts",
+		"test": "ava"
+	},
+	"ava": {
+		"files": [
+			"src/**/*.test.ts"
+		],
+		"extensions": [
+			"ts"
+		],
+		"require": [
+			"ts-node/register",
+			"tsconfig-paths/register"
+		],
+		"verbose": true,
+		"ignoredByWatcher": []
+	},
+	"devDependencies": {
+		"@types/node": "^14.0.13",
+		"ava": "^3.9.0",
+		"esbuild": "^0.4.13",
+		"ts-node": "^8.10.2",
+		"tsconfig-paths": "^3.9.0"
+	}
+}
